@@ -39,7 +39,8 @@ class Manager(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True) 
     name = db.Column(db.String, nullable=False)  
     email = db.Column(db.String, nullable=False, unique=True) 
-    services = db.Column(db.String)  
+    services = db.Column(db.String) 
+    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))  
     
     clients = db.relationship('Client', back_populates='managers')  
 
