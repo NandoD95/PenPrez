@@ -3,13 +3,13 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, session
+from flask import request, session, make_response
 from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Client, Manager, Review 
+from models import Client
 
 # Views go here!
 
@@ -17,12 +17,26 @@ from models import Client, Manager, Review
 def index():
      return '<h1>Project Server</h1>'  
 
+class Clients(Resource): 
+    def get(self) 
+    clients = Client.query.all() 
+    clients_list = [client.to_dict() for client in clients] 
+    return clients_list, 200 
+
+class ClientsById(Resource): 
+    def get(self, id):
+        client = Client.query.filter_by(id = id).first() 
+        if client: 
+            return client.to_dict(), 200 
+        else: 
+            return {"message": "Client not found"}, 404
+
 class SignUp(Resource) 
     def post(self):  
         try:
             data = request.get_json() 
             client = Client(username = data['username']) 
-            client.password_has = data['password'] 
+            client._password_hash = data['password'] 
             db.session.add(client) 
             db.session.commit() 
             return {'message': 'User created successfully'}, 201 
@@ -61,8 +75,10 @@ class Logout(Resource):
 
         session['client_id'] = None
         
-        return {}, 204 
+        return {}, 204  
 
+api.add_resource(Clients, '/clients') 
+api.add_resource(ClientsById, '/clients/<int:id>')
 api.add_resource(Signup, '/signup', endpoint='signup') 
 api.add_resource(CheckSession, '/check_session', endpoint='check_session') 
 api.add_resource(Login, '/login', endpoint='login') 
