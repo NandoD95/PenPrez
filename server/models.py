@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.associationproxy import association_proxy 
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from config import db, bcrypt
 
@@ -31,7 +32,7 @@ class Client(db.Model):
             self._password_hash, password.encode('utf-8'))
 
 
-class Manager(db.Model): 
+class Manager(db.Model, SerializerMixin): 
    
     __tablename__ = 'managers' 
     
@@ -39,15 +40,24 @@ class Manager(db.Model):
     name = db.Column(db.String, nullable=False)  
     email = db.Column(db.String, nullable=False, unique=True) 
     services = db.Column(db.String)  
+    
+    clients = db.relationship('Client', back_populates='managers')  
+
+    serialize_rules = ('-client.managers')
 
 
-class Review(db.Model): 
+
+class Review(db.Model, SerializerMixin): 
    
     __tablename__ = 'reviews' 
     
     id = db.Column(db.Integer, primary_key=True)  
     review = db.Column(db.String)
     client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))  
+    
+    client = db.relationship('Client', backref = 'reviews') 
+
+    serialize_rules = ('-client.reviews')
 
 
 

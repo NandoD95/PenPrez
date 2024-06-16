@@ -3,8 +3,8 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request
-from flask_restful import Resource, session 
+from flask import request, session
+from flask_restful import Resource
 
 # Local imports
 from config import app, db, api
@@ -22,7 +22,7 @@ class SignUp(Resource)
         try:
             data = request.get_json() 
             client = Client(username = data['username']) 
-            client.password_has = dtata['password'] 
+            client.password_has = data['password'] 
             db.session.add(client) 
             db.session.commit() 
             return {'message': 'User created successfully'}, 201 
