@@ -35,7 +35,7 @@ class SignUp(Resource)
     def post(self):  
         try:
             data = request.get_json() 
-            client = Client(username = data['username']) 
+            client = Client(username = data['username'], email = data['email']) 
             client._password_hash = data['password'] 
             db.session.add(client) 
             db.session.commit() 
