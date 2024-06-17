@@ -5,6 +5,9 @@ import App from "./App";
 import ErrorPage from "./ErrorPage" 
 import Header from "./Header";
 import SignUp from "./SignUp";
+import About from "./About";
+import Podcast from "./Podcast";
+import PrivatePolicy from "./PrivatePolicy";
 
 const routes =[ 
     // all linkable routes on the page added with an error 
@@ -35,6 +38,21 @@ const routes =[
             {
                 path: "/SignUp",
                 element:<SignUp />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "/About",
+                element:<About />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "/Podcast",
+                element:<Podcast />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "/PrivatePolicy",
+                element:<PrivatePolicy />,
                 errorElement: <ErrorPage />
             }
         ] 
