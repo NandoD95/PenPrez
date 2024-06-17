@@ -8,7 +8,7 @@ function Menu() {
             <NavLink to='/About'> About Us </NavLink>
             <NavLink to='Podcast'>Podcast</NavLink>
             <NavLink to='WorkWithUs'>Work With Us</NavLink>
-            <NavLink to='TermsCondiditions'>Terms & Conditions</NavLink>
+            <NavLink to='TermsCondition'>Terms & Conditions</NavLink>
             <NavLink to='PrivatePolicy'>Private Policy</NavLink>
         </nav>
         </div>
