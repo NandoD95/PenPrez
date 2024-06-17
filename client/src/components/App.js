@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import React from "react"; 
+import '../App.css' 
+import NavBar from "./Navbar" 
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return <h1>Pen Prez</h1>;
+  return (
+    <div className="App"> 
+      <NavBar />
+      <Outlet />
+    </div>
+  );
 }
-
 export default App;
