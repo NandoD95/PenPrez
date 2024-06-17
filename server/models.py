@@ -15,7 +15,7 @@ class Client(db.Model):
     username = db.Column(db.String, nullable = False, unique = True)  
     _password_hash = db.Column(db.String, nullable = False) 
     billing = db.Column(db.String) 
-    manager_id = db.Coliumn(db.Integer, db.ForiegnKey('manager.id'))  
+    manager_id = db.Column(db.Integer, db.ForeignKey('manager.id'))  
 
     @hybrid_property
     def password_hash(self):

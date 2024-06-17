@@ -18,10 +18,10 @@ def index():
      return '<h1>Project Server</h1>'  
 
 class Clients(Resource): 
-    def get(self) 
-    clients = Client.query.all() 
-    clients_list = [client.to_dict() for client in clients] 
-    return clients_list, 200 
+    def get(self):
+        clients = Client.query.all() 
+        clients_list = [client.to_dict() for client in clients] 
+        return clients_list, 200 
 
 class ClientsById(Resource): 
     def get(self, id):
@@ -31,7 +31,7 @@ class ClientsById(Resource):
         else: 
             return {"message": "Client not found"}, 404
 
-class SignUp(Resource) 
+class SignUp(Resource):
     def post(self):  
         try:
             data = request.get_json() 
@@ -79,7 +79,7 @@ class Logout(Resource):
 
 api.add_resource(Clients, '/clients') 
 api.add_resource(ClientsById, '/clients/<int:id>')
-api.add_resource(Signup, '/signup', endpoint='signup') 
+api.add_resource(SignUp, '/signup', endpoint='signup') 
 api.add_resource(CheckSession, '/check_session', endpoint='check_session') 
 api.add_resource(Login, '/login', endpoint='login') 
 api.add_resource(Logout, '/logout', endpoint='logout')
