@@ -54,4 +54,4 @@ function TermsCondition(){
     );
 }
 
-export default TermsCondition
+export default TermsCondition;
