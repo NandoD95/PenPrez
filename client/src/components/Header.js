@@ -10,7 +10,6 @@ function Header() {
         PenPrez 
       </h1> 
           <Menu /> 
-          <Login />
     </header>
   );
 }
