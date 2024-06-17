@@ -4,6 +4,7 @@ import Login from "./Login";
 import App from "./App";
 import ErrorPage from "./ErrorPage" 
 import Header from "./Header";
+import SignUp from "./SignUp";
 
 const routes =[ 
     // all linkable routes on the page added with an error 
@@ -30,7 +31,12 @@ const routes =[
                 path: "/TermsCondition", 
                 element: <TermsCondition />, 
                 errorElement: <ErrorPage /> 
-            } 
+            }, 
+            {
+                path: "/SignUp",
+                element:<SignUp />,
+                errorElement: <ErrorPage />
+            }
         ] 
       } 
 ]; 
