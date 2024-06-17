@@ -3,6 +3,7 @@ import TermsCondition from "./TermsCondition";
 import Login from "./Login"; 
 import App from "./App";
 import ErrorPage from "./ErrorPage" 
+import Header from "./Header";
 
 const routes =[ 
     // all linkable routes on the page added with an error 
