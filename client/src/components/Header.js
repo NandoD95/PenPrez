@@ -7,8 +7,10 @@ function Header() {
   return (
     <header id="header">
       <h1>
-        PenPrez.com , <Menu />, <Login />
-      </h1>
+        PenPrez 
+      </h1> 
+          <Menu /> 
+          <Login />
     </header>
   );
 }
