@@ -4,10 +4,10 @@ function Navbar(){
     return(
         <div id="navbar-container">
         <nav className="navbar">
-            <NavLink to='/'>Home</NavLink> 
-            <div>
-            <NavLink to='/SignUp'>Sign Up</NavLink>
-            </div>
+            <NavLink to='/'>PenPrez.com</NavLink> 
+            <Dropdown>Menu</Dropdown>
+            <NavLink to='/Login'>Login</NavLink>
+            <NavLink to='/WorkWithUs'>Work With Us</NavLink>
         </nav>
         </div>
     );
