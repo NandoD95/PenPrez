@@ -71,4 +71,4 @@ function Login({ setIsLoggedIn, setUserId }) {
     )
 }
 
-export default Login
+export default Login;
