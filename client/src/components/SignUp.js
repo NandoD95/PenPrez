@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-function SignUp(){
+function SignUp({setIsLoggedIn, setUserId}){
     const navigate = useNavigate()
 
     const [userName, setUserName] = useState("")

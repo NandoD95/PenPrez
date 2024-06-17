@@ -93,4 +93,4 @@ function PrivatePolicy(){
     );
 }
 
-export default PrivatePolicy
+export default PrivatePolicy;
