@@ -1,6 +1,4 @@
-import React from "react"; 
-import Menu from "./Menu";
-import Login from "./Login"
+import React from "react";
 
 function Header() {
   // header page
@@ -9,7 +7,6 @@ function Header() {
       <h1>
         PenPrez 
       </h1> 
-          <Menu /> 
     </header>
   );
 }
