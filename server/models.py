@@ -4,9 +4,9 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 from config import db, bcrypt
 
-class Client(db.Model): 
+class User(db.Model): 
    
-    __tablename__ = 'clients' 
+    __tablename__ = 'users' 
    
     id = db.Column(db.Integer, primary_key=True) 
     name = db.Column(db.String, nullable=False) 
@@ -15,7 +15,7 @@ class Client(db.Model):
     username = db.Column(db.String, nullable = False, unique = True)  
     _password_hash = db.Column(db.String, nullable = False) 
     billing = db.Column(db.String) 
-    manager_id = db.Column(db.Integer, db.ForeignKey('manager.id'))  
+    manager_id = db.Column(db.Integer, db.ForeignKey('managers.id'))  
 
     @hybrid_property
     def password_hash(self):
@@ -40,11 +40,11 @@ class Manager(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)  
     email = db.Column(db.String, nullable=False, unique=True) 
     services = db.Column(db.String) 
-    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))  
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     
-    clients = db.relationship('Client', back_populates='managers')  
+    clients = db.relationship('User', back_populates='managers')  
 
-    serialize_rules = ('-client.managers')
+    serialize_rules = ('-user.managers')
 
 
 
@@ -54,11 +54,11 @@ class Review(db.Model, SerializerMixin):
     
     id = db.Column(db.Integer, primary_key=True)  
     review = db.Column(db.String)
-    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))  
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     
-    client = db.relationship('Client', backref = 'reviews') 
+    client = db.relationship('User', backref = 'reviews') 
 
-    serialize_rules = ('-client.reviews')
+    serialize_rules = ('-user.reviews')
 
 
 
