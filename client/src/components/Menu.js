@@ -1,19 +1,32 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-
-function Menu() {
-    return (
-        <div>
-        <nav>
-            <NavLink to='/About'> About Us </NavLink>
-            <NavLink to='Podcast'>Podcast</NavLink>
-            <NavLink to='WorkWithUs'>Work With Us</NavLink>
-            <NavLink to='TermsCondition'>Terms & Conditions</NavLink>
-            <NavLink to='PrivatePolicy'>Private Policy</NavLink>
-        </nav>
-        </div>
-    );
-}
-
-
-export default Menu;
+export const Menu = [
+    {
+        title: "Home",
+        path: '/',
+        cName: 'dropdown-link'
+    },
+    {
+        title: "About",
+        path: '/about',
+        cName: 'dropdown-link'
+    },
+    {
+        title: "Podcast",
+        path: '/podcast',
+        cName: 'dropdown-link'
+    },
+    {
+        title: "Work With Us",
+        path: '/workwithus',
+        cName: 'dropdown-link'
+    },
+    {
+        title: "Terms & Conditions",
+        path: '/TermsCondition',
+        cName: 'dropdown-link'
+    },
+    {
+        title: "Privacy Policy",
+        path: '/PrivatePolicy',
+        cName: 'dropdown-link'
+    }
+]
