@@ -11,11 +11,10 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     name = db.Column(db.String, nullable=False) 
     email = db.Column(db.String, nullable=False, unique=True) 
-    phone = db.Column(db.String, nullable=False) 
+    phone = db.Column(db.String, nullable = False) 
     username = db.Column(db.String, nullable = False, unique = True)  
-    _password_hash = db.Column(db.String, nullable = False) 
-    billing = db.Column(db.String) 
-    manager_id = db.Column(db.Integer, db.ForeignKey('managers.id'))  
+    _password_hash = db.Column(db.String, nullable = False)  
+    manager = db.relationship("Manager", back_populates = "users")
 
     @hybrid_property
     def password_hash(self):
@@ -42,9 +41,9 @@ class Manager(db.Model, SerializerMixin):
     services = db.Column(db.String) 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     
-    clients = db.relationship('User', back_populates='managers')  
+    users = db.relationship('User', back_populates='manager')  
 
-    serialize_rules = ('-user.managers')
+    serialize_rules = ('-users.manager')
 
 
 
@@ -56,7 +55,7 @@ class Review(db.Model, SerializerMixin):
     review = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     
-    client = db.relationship('User', backref = 'reviews') 
+    user = db.relationship('User', backref = 'reviews') 
 
     serialize_rules = ('-user.reviews')
 

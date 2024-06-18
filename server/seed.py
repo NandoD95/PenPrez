@@ -17,28 +17,36 @@ if __name__ == '__main__':
         # Seed code goes here!  
 
         print("Deleting all records...")
-        User.query.delete()
+        User.query.delete() 
+        db.session.commit()
+        
+        print("Creating Users...")  
+        u1 = User ( 
+            username="jojo", 
+            name="Joel John", 
+            email="joeljohn@gmail.com", 
+            _password_hash="299992", 
+            phone="1234567890"
+        )
+        u2 = User ( 
+            username="fern", 
+            name="Fernando", 
+            email="fernando@gmail.com", 
+            _password_hash="12345", 
+            phone= "7185463214"
+        )
+        db.session.add(u1) 
+        db.session.add(u2)
+        db.session.commit() 
+        
+        for i in range(5):
 
-        print("Creating Users...") 
-        users = []
-        usernames = []
-        for i in range(20):
-
-            username = fake.user_name() 
-        while username in usernames: 
-            username = fake.user_name() 
-            usernames.append(username) 
-            user = User(username=username, name=fake.name(), email=fake.email(), _password_hash="password") 
-            users.append(user) 
+              
+            user = User(username=fake.user_name(), name=fake.name(), email=fake.email(), _password_hash="password", phone="2345678912") 
             db.session.add(user)
             db.session.commit() 
 
 
-u1 = User ( 
-    username="jojo", 
-    name="Joel John", 
-    email="joeljohn@gmail.com", 
-    _password_hash="299992"
-)
+    
 
 
