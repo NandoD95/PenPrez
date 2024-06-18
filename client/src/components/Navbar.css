@@ -42,6 +42,7 @@
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    align-items: center;
   }
   
   .nav-links:hover {
