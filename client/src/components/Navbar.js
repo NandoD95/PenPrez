@@ -1,7 +1,8 @@
 import {NavLink} from "react-router-dom";
 import React, {useState} from "react";
-import { Button } from "./Button"
-import Dropdown from "./Dropdown"
+import { Button } from "./Button";
+import Dropdown from "./Dropdown";
+import './Navbar.css'
 
 function Navbar(){
     const [click, setClick] = useState(false);
@@ -48,7 +49,7 @@ function Navbar(){
                             Login
                         </NavLink>
                     </li>
-                    <li className="nav item">
+                    <li className="nav-item">
                         <NavLink to='/WorkWithUs' className='nav-links' onClick={closeMobileMenu}>
                             Work With Us
                         </NavLink>
