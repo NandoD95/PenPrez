@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, User
+from models import db, User, Manager, Review
 
 if __name__ == '__main__':
     fake = Faker()
@@ -34,7 +34,7 @@ if __name__ == '__main__':
             email="fernando@gmail.com", 
             _password_hash="12345", 
             phone= "7185463214"
-        )
+        ) 
         db.session.add(u1) 
         db.session.add(u2)
         db.session.commit() 
@@ -46,7 +46,18 @@ if __name__ == '__main__':
             db.session.add(user)
             db.session.commit() 
 
+    managers = [ 
+        Manager(name= "Jake Smith", email="jakesmith@gmail.com", services="social media", user_id=1)
 
+    ]  
+    db.session.add(managers) 
+    db.session.commit()
+
+    reviews = [ 
+        Review(review="these guys are really helpful", user_id=1)
+    ] 
+    db.session.add(reviews) 
+    db.session.commit()
     
 
 
