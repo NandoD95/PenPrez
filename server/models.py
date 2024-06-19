@@ -1,6 +1,8 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy 
-from sqlalchemy.ext.hybrid import hybrid_property
+from flask_sqlalchemy import SQLAlchemy 
+from sqlalchemy.orm import validates
+
 
 from config import db, bcrypt
 
@@ -16,7 +18,7 @@ class User(db.Model):
     _password_hash = db.Column(db.String, nullable = False)  
     manager = db.relationship("Manager", back_populates = "users")
 
-    @hybrid_property
+    @property
     def password_hash(self):
         raise AttributeError('Password hashes may not be viewed.')
     
@@ -30,6 +32,24 @@ class User(db.Model):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
 
+    @validates('email')
+    def validate_email(self, key, address):
+        if address is None:
+            return address
+        if '@' not in address:
+            raise ValueError("Invalid email address")
+        return address 
+    
+    @validates('phone') 
+    def validate_phone(self, key, phone): 
+        if phone is None: 
+            return phone 
+        if len(phone) != 10: 
+            raise ValueError("Invalid phone number") 
+        return phone
+
+    def __repr__(self):
+        return f'<User id={self.id} username={self.username} >'
 
 class Manager(db.Model, SerializerMixin): 
    
@@ -59,5 +79,15 @@ class Review(db.Model, SerializerMixin):
 
     serialize_rules = ('-user.reviews')
 
-
+    @validates('user_id') 
+    def validate_user_id(self, key, user_id): 
+        if user_id is None: 
+            raise ValueError("review must need a user ID ")
+        return user_id  
+    
+    @validates('review') 
+    def validate_review(self, key, review): 
+        if review is None: 
+            raise ValueError("review must not be empty") 
+        return review
 
