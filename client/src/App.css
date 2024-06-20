@@ -13,9 +13,17 @@
     font-family: 'PT Sans', sans-serif;
   }
 
-/* .header{
+.home-page{
     background-image: url('./components/images/PenPrez-logo.jpeg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-} */
+    color: #fff; 
+    font-size: 25px; 
+}
+
+.header{
+    font-size: 25px;
+    background-color: black;
+    color: #fff;
+}
