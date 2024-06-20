@@ -46,18 +46,24 @@ if __name__ == '__main__':
             db.session.add(user)
             db.session.commit() 
 
-    managers = [ 
-        Manager(name= "Jake Smith", email="jakesmith@gmail.com", services="social media", user_id=1)
+        print("Creating Managers...") 
+        m1 = Manager( 
+            name= "Jake Smith", 
+            email="jakesmith@gmail.com",
+            services="social media",
+            user_id=1 
+        )
+          
+        db.session.add(m1) 
+        db.session.commit()
 
-    ]  
-    db.session.add(managers) 
-    db.session.commit()
-
-    reviews = [ 
-        Review(review="these guys are really helpful", user_id=1)
-    ] 
-    db.session.add(reviews) 
-    db.session.commit()
+        print("Creating Reviews...") 
+        r1 = Review( 
+            review="these guys are really helpful", 
+            user_id=1
+        )  
+        db.session.add(r1) 
+        db.session.commit()
     
 
 
