@@ -48,24 +48,23 @@ function Login({ setIsLoggedIn, setUserId }) {
 
     return (
         <>
-            <div>
-                {/* <img className=logo src="/Logo.png" /> */}
+            <div className="container">
                 <h1>PenPrez</h1>
             </div>
             <div>
-                <h2>Welcome to PenPrez</h2>
-                <form className="flex items-center flex-col" onSubmit={(e) => logIn(e)}>
+                <h2 className="h2-login">Welcome to PenPrez</h2>
+                <form className="login-form" onSubmit={(e) => logIn(e)}>
                     <div>
-                        <h3 className="text-center text-xl select-none text-primaryPurple">Username:</h3>
+                        <h3 className="h3-login">Username:</h3>
                         <input id="username" className="inputs" autoComplete="username" onChange={(e) => setLoginUser(e.target.value)} />
                     </div>
                     <div>
-                        <h3 className="text-center text-xl select-none text-primaryPurple">Password:</h3>
+                        <h3 className="">Password:</h3>
                         <input id="password" className="inputs" autoComplete="current-password" type="password" onChange={(e) => setLoginPassword(e.target.value)} />
                     </div>
-                    <button className="bg-lightBlue hover:bg-blue-500 shadow-xl text-white font-bold py-2 px-4 m-6 rounded" type="submit">Log In</button>
+                    <button className="login-btn" type="submit">Log In</button>
                 </form>
-                <h3 className="text-center select-none m-5">New to PenPrez? <Link className="text-primaryBlue border-b-2 border-primaryBlue hover:border-primaryPurple hover:text-primaryPurple" to="/signup">Sign Up</Link></h3>
+                <h3 className="">New to PenPrez? <Link className="text-primaryBlue border-b-2 border-primaryBlue hover:border-primaryPurple hover:text-primaryPurple" to="/signup">Sign Up</Link></h3>
             </div>
         </>
     )
