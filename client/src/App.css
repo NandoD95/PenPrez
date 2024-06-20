@@ -263,3 +263,50 @@
     background-color: #0056b3;
   }
   
+  .pc-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #007bff; /* Border around the container */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.4); /* Box shadow for a subtle effect */
+  }
+  
+  .pc-container h3 {
+    font-size: 50px;
+    color: #007bff; /* Default color for "Podcast" header */
+    animation: flash 2s infinite alternate; /* Flashing animation */
+  }
+  
+  .pc-container h1 {
+    font-size: 70px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .pc-container p {
+    font-size: 25px;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* Flashing animation keyframes */
+  @keyframes flash {
+    0% {
+      color: #007bff; /* Start with the default color */
+    }
+    25% {
+      color: #ff6600; /* Flash to an alternate color */
+    }
+    50% {
+        color: yellow;
+    }
+    75% {
+        color: purple;
+    }
+    100% {
+        color: #007bff; /* Return to the default color */
+    }
+  }
+  

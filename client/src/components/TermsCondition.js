@@ -2,9 +2,9 @@ import React from "react";
 
 function TermsCondition(){
     return(
-        <div>
+        <div className="terms-container">
             <h1>Terms and Conditions</h1>
-                <p>
+                <div className="terms-content">
                     <div>TERMS AND CONDITIONS</div>
                     <div><h1>1. INTRODUCTION</h1></div>
                     <div>Welcome to PenPrez. These Terms and Conditions govern your relationship with www.penprez.com (the "Service") operated by PenPrez.</div>
@@ -49,7 +49,7 @@ function TermsCondition(){
                     <div>PenPrez</div>
                     <div>team@penprez.com</div>
                     www.penprez.com
-                </p>
+                </div>
         </div>
     );
 }
