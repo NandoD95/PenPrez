@@ -60,7 +60,8 @@ if __name__ == '__main__':
         print("Creating Reviews...") 
         r1 = Review( 
             review="these guys are really helpful", 
-            user_id=1
+            user_id=1,
+            manager_id=1
         )  
         db.session.add(r1) 
         db.session.commit()

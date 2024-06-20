@@ -73,17 +73,26 @@ class Review(db.Model, SerializerMixin):
     
     id = db.Column(db.Integer, primary_key=True)  
     review = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
+    manager_id = db.Column(db.Integer, db.ForeignKey('managers.id'))
     
     user = db.relationship('User', backref = 'reviews') 
+    manager = db.relationship('Manager', backref = 'reviews')
 
-    serialize_rules = ('-user.reviews')
+    serialize_rules = ('-user.reviews') 
+    serialize_rules = ('-manager.reviews')
 
     @validates('user_id') 
     def validate_user_id(self, key, user_id): 
         if user_id is None: 
             raise ValueError("review must need a user ID ")
         return user_id  
+    
+    @validates('manager_id') 
+    def validate_manager_id(self, key, manager_id): 
+        if manager_id is None: 
+            raise ValueError("review must need a manager ID ") 
+        return manager_id
     
     @validates('review') 
     def validate_review(self, key, review): 
