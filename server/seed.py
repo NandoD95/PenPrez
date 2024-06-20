@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
         print("Deleting all records...")
         User.query.delete() 
+        Manager.query.delete() 
         db.session.commit()
         
         print("Creating Users...")  
@@ -53,8 +54,15 @@ if __name__ == '__main__':
             services="social media",
             user_id=1 
         )
+        m2 = Manager( 
+            name="Emily Chen", 
+            email="emilychen@gmail.com", 
+            services="sms", 
+            user_id=2 
+        )
           
         db.session.add(m1) 
+        db.session.add(m2)
         db.session.commit()
 
         print("Creating Reviews...") 
@@ -62,8 +70,14 @@ if __name__ == '__main__':
             review="these guys are really helpful", 
             user_id=1,
             manager_id=1
+        ) 
+        r2 = Review( 
+            review="she gave me a good idea for my business", 
+            user_id=1,
+            manager_id=2
         )  
         db.session.add(r1) 
+        db.session.add(r2)
         db.session.commit()
     
 
