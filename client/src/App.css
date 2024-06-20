@@ -11,16 +11,84 @@
     margin: 0;
     padding: 0;
     font-family: 'PT Sans', sans-serif;
-  }
+}
 
 /* home page css */
-.home-page{
+.home-page {
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
     background-image: url('./components/images/PenPrez-logo.jpeg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    color: #fff; 
-    font-size: 25px; 
+    color: #fff;
+    font-size: 25px;
+    min-height: 100vh; /* Ensure page fills at least viewport height */
+}
+
+.hp-content {
+    flex: 1; /* Take up remaining space */
+    padding: 100px; /* Adjust as necessary */
+}
+
+.main-heading {
+    font-size: 75px; /* Example of smaller text size */
+}
+
+.services-section {
+    flex: 2; /* Take up remaining space */
+    display: flex;
+    /* justify-content: flex-end; Align items to the right */
+    align-items: center; /* Center items vertically */
+    padding: 20px; /* Adjust as necessary */
+}
+
+.service-content {
+    max-width: 200px; /* Example of limiting width */
+}
+
+.buttons-container {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    background-color: var(--primary);
+}
+
+.about-btn {
+    cursor: pointer;
+}
+
+.pod-btn {
+    cursor: pointer;
+}
+
+.wwu-btn {
+    cursor: pointer;
+}
+
+.tc-btn {
+    cursor: pointer;
+}
+
+.pp-btn{
+    cursor: pointer;
+}
+
+.buttons-container:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 4px;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+.buttons-container > * {
+    margin-right: 10px; /* Example of spacing between buttons */
 }
 
 /* header css */
@@ -38,7 +106,7 @@
     box-sizing: border-box;
 }
 
-/* Container styles */
+/* login Container styles */
 .container {
     width: 100%;
     max-width: 400px;
@@ -60,7 +128,7 @@
     color: #666666;
 }
 
-/* Form styles */
+/* login Form styles */
 .login-form {
     display: flex;
     flex-direction: column;
@@ -98,7 +166,7 @@
     background-color: #0056b3;
 }
 
-/* Link styles */
+/* login Link styles */
 .text-primaryBlue {
     color: #007bff;
     text-decoration: none;
@@ -121,7 +189,7 @@
     border-color: #6f42c1;
 }
 
-/* Responsive adjustments */
+/* login Responsive adjustments */
 @media (max-width: 480px) {
     .container {
         padding: 20px;
@@ -132,14 +200,14 @@
     }
 }
 
-/* Resetting default margin and padding */
+/* sign up Resetting default margin and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Container styles */
+/* signup Container styles */
 .contain {
     width: 100%;
     max-width: 500px;
@@ -161,7 +229,7 @@
     color: #666666;
 }
 
-/* Form styles */
+/* signup Form styles */
 .signup-form {
     display: flex;
     flex-direction: column;
@@ -207,11 +275,12 @@
     background-color: #0056b3;
 }
 
-/* Error message styles */
+/* signup Error message styles */
 .m-4 {
     margin: 10px 0;
 }
 
+/* Review page  */
 .review-container {
     max-width: 600px;
     margin: 0 auto;
@@ -263,7 +332,9 @@
     background-color: #0056b3;
   }
   
-  .pc-container {
+
+/* podcast css  */
+.pc-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -291,7 +362,7 @@
     line-height: 1.6;
   }
   
-  /* Flashing animation keyframes */
+  /* review page Flashing animation keyframes */
   @keyframes flash {
     0% {
       color: #007bff; /* Start with the default color */
@@ -310,3 +381,42 @@
     }
   }
   
+.service-container {
+    background-color: black;
+    border: 2px solid #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.service-item {
+    margin-bottom: 10px;
+}
+
+.service-header {
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+}
+
+.service-item.h3 {
+    font-size: 25px;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.blue {
+    color: blue;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+
+/* p {
+    color: #fff;
+}  */
