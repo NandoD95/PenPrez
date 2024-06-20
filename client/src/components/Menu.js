@@ -15,6 +15,11 @@ export const Menu = [
         cName: 'dropdown-link'
     },
     {
+        title: "Review",
+        path: '/review',
+        cName: 'dropdown-link'
+    },
+    {
         title: "Work With Us",
         path: '/workwithus',
         cName: 'dropdown-link'
