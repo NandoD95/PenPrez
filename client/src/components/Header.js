@@ -17,7 +17,9 @@ function Header() {
           Email, Social Media, SMS, and more
           </div>
       </h3>
-      <Home />
+      <div className="home-header">
+        <Home />
+      </div>
     </header>
   );
 }
