@@ -26,7 +26,7 @@ if __name__ == '__main__':
             username="jojo", 
             name="Joel John", 
             email="joeljohn@gmail.com", 
-            _password_hash="299992", 
+            _password_hash="29999210", 
             phone="1234567890"
         )
         u2 = User ( 
