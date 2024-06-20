@@ -5,12 +5,16 @@ import Service from "./Service";
 function Home(){
     return (
         <div className="home-page">
-            <div className="hp-content">
-                <h1>Listening and adjusting are the keys to our coaching approach. Let us help you take your company to new levels.</h1>
+            <div className="content-section">
+                <div className="hp-content">
+                    <h1 className="main-heading">Listening and adjusting are the keys to our coaching approach. Let us help you take your company to new levels.</h1>
+                </div>
             </div>
-            <div className="Services-hp">
-                <h2>Services</h2>
-                <Service />
+            <div className="services-section">
+                <div className="service-content">
+                    <h2>Services</h2>
+                    <Service />
+                </div>
             </div>
             <div className="buttons-container">
                 <Link to='About'>
