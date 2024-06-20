@@ -1,12 +1,23 @@
 import React from "react";
+import Home from "./Home";
 
 function Header() {
   // header page
   return (
-    <header id="header">
+    <header className="header">
       <h1>
-        PenPrez 
+        PENPREZ
+        <div>
+          BUSINESS COPYWRITING
+        </div>
       </h1> 
+      <h3>
+        Words that Win Clients
+        <div>
+          Email, Social Media, SMS, and more
+          </div>
+      </h3>
+      <Home />
     </header>
   );
 }
