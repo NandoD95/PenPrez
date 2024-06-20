@@ -362,7 +362,7 @@
     line-height: 1.6;
   }
   
-  /* review page Flashing animation keyframes */
+  /* podcast page Flashing animation keyframes */
   @keyframes flash {
     0% {
       color: #007bff; /* Start with the default color */
@@ -381,6 +381,7 @@
     }
   }
   
+/* service page styling */
 .service-container {
     background-color: black;
     border: 2px solid #fff;
@@ -420,3 +421,47 @@
 /* p {
     color: #fff;
 }  */
+
+/* about page */
+.about-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    padding: 20px;
+    background-color: #f0f0f0; /* Example background color */
+}
+
+.image-and-text-container {
+    display: flex;
+    justify-content: space-around; /* Space evenly between images and text */
+    max-width: 1200px; /* Example maximum width for the content */
+}
+
+.image-text-wrapper {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 20px; /* Example margin between image/text pairs */
+}
+
+.about-image {
+    width: 300px; /* Adjust image width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Example margin between image and text */
+}
+
+.jake-text,
+.vinny-text {
+    max-width: 50%; /* Example maximum width for text */
+}
+
+.jake-text h1,
+.vinny-text h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.jake-text p,
+.vinny-text p {
+    font-size: 18px;
+    line-height: 1.6;
+}
