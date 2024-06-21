@@ -20,7 +20,7 @@ function Login({ setIsLoggedIn, setUserId }) {
 
     // Handle form submission
     const handleSubmit = (values, { setSubmitting }) => {
-        fetch('/api/login', {
+        fetch('/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
