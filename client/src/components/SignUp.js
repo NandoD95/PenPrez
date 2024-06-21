@@ -103,11 +103,13 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
+import * as Yup from "yup"; 
+import { useOutletContext} from "react-router-dom";
 
-function SignUp({ setIsLoggedIn, setUserId }) {
+function SignUp() {
     const navigate = useNavigate();
 
+    const [setUserId, setIsLoggedIn, userId, isLoggedIn] = useOutletContext();
     // Validation schema using Yup
     const validationSchema = Yup.object().shape({
         username: Yup.string().required("Username is required"),

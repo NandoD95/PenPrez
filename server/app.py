@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, session, make_response
+from flask import request, session, make_response, render_template
 from flask_restful import Resource
 
 # Local imports
@@ -30,6 +30,36 @@ class UsersById(Resource):
             return user.to_dict(), 200 
         else: 
             return {"message": "User not found"}, 404 
+
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        if not user:
+            return make_response({"error": "User not found"}, 404)
+        try:
+            params = request.json
+            check_username = User.query.filter(User.username == params.get('username')).first()
+            if check_username and check_username.id != id:
+                return make_response({"error": "Username already exists"}, 401)
+            for attr in params:
+                setattr(user, attr, params[attr])
+            db.session.add(user)
+            db.session.commit()
+
+            user_dict = user.to_dict()
+            return make_response(user_dict, 202)
+        
+        except ValueError as v_error:
+            return make_response({'errors': str(v_error)}, 400) 
+
+    def delete(self, id):
+        user = User.query.filter_by(id=id).first()
+        if not user:
+            response = {"error": "User not found"}
+            return make_response(response, 404)
+        db.session.delete(user)
+        db.session.commit()
+
+        return '', 204 
 
 class Managers(Resource): 
     def get(self): 
@@ -99,7 +129,7 @@ class SignUp(Resource):
         try:
             data = request.get_json() 
             user = User(username = data['username'], email = data['email'], name=data['name'], phone=data['phone']) 
-            user._password_hash = data['password'] 
+            user.password_hash = data['password'] 
             db.session.add(user) 
             db.session.commit() 
             return {'message': 'User created successfully'}, 201 
