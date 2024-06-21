@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom"
 function Login() {
     const navigate = useNavigate(); 
 
-    const [setUserId, setIsLoggedIn, userId, isLoggedIn] = useOutletContext();
+    const [userId, setUserId, isLoggedIn, setIsLoggedIn,] = useOutletContext();
 
     // Initial form values
     const initialValues = {
