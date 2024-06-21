@@ -45,10 +45,10 @@ function Navbar(){
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className="nav-item"
                         onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                        {dropdown && <Dropdown />}
                         <NavLink to='/' className='nav-links' onClick={closeMobileMenu}>
                             Menu <i className="fas fa-caret-down" />
-                        </NavLink>
-                        {dropdown && <Dropdown />}
+                        </NavLink>  
                     </li>
                     <li className="nav-item">
                         <NavLink to='/login' className='nav-links' onClick={closeMobileMenu}>
