@@ -7,7 +7,7 @@ from flask import request, session, make_response
 from flask_restful import Resource
 
 # Local imports
-from config import app, db, api
+from config import app, db, api, bcrypt
 # Add your model imports
 from models import User, Manager, Review
 
@@ -47,7 +47,7 @@ class ManagersById(Resource):
 
 class Reviews(Resource): 
     def get(self): 
-        reviews = [review.to_dict() for review in Review.query.all] 
+        reviews = [review.to_dict() for review in Review.query.all()] 
         return make_response(reviews,200) 
 
     def post(self):  
@@ -107,17 +107,16 @@ class SignUp(Resource):
             return make_response({"error": "Missing required field: " + str(k_error)}, 422) 
 
 class CheckSession(Resource):
-    def get(self):
-
-        user_id = session["user_id"]
+     def get(self):
+        user_id = session.get('user_id')
         if user_id:
-            user = User.query.filter_by(id = user_id).first()
-            return make_response(user.to_dict(), 200)
-        else:
-            return make_response({"error": "No session found"}, 401)
+            user = db.session.get(User, user_id)
+            if user:
+                return make_response(user.to_dict(), 200)
+        return make_response({'error': 'Unauthorized: Must login'}, 401)
 
 class Login(Resource):
-    def post(self):
+     def post(self):
         username = request.get_json()['username']
         password = request.get_json()['password']
         user = User.query.filter(User.username == username).first()
@@ -128,7 +127,7 @@ class Login(Resource):
                     return make_response(user.to_dict(), 200)
             except KeyError as k_error:
                 return make_response({"error": "Missing required field: " + str(k_error)}, 422)
-        
+
         return make_response({'error': '401 Unauthorized'}, 401) 
 
 class Logout(Resource):
