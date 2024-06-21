@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@fullcalendar/daygrid": "^6.1.14",
-    "@fullcalendar/interaction": "^6.1.14",
-    "@fullcalendar/timegrid": "^6.1.14",
-    "formik": "^2.4.6",
-    "yup": "^1.4.0"
-  }
-}

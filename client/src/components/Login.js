@@ -1,10 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import * as Yup from "yup"; 
+import { useOutletContext } from "react-router-dom"
 
-function Login({ setIsLoggedIn, setUserId }) {
-    const navigate = useNavigate();
+function Login() {
+    const navigate = useNavigate(); 
+
+    const [setUserId, setIsLoggedIn, userId, isLoggedIn] = useOutletContext();
 
     // Initial form values
     const initialValues = {
@@ -19,7 +22,8 @@ function Login({ setIsLoggedIn, setUserId }) {
     });
 
     // Handle form submission
-    const handleSubmit = (values, { setSubmitting }) => {
+    const handleFormSubmit = (values) => { 
+        
         fetch('/login', {
             method: "POST",
             headers: {
@@ -29,23 +33,21 @@ function Login({ setIsLoggedIn, setUserId }) {
         })
         .then(r => {
             if (r.ok) {
-                return r.json();
+                r.json().then(data => {
+                    const userId = data.id;
+                    setUserId(userId);
+                    setIsLoggedIn(true);
+                    navigate(`/user/${userId}`);
+                });
             } else {
                 throw new Error("Invalid login credentials");
             }
         })
-        .then(data => {
-            const userId = data.id;
-            setUserId(userId);
-            setIsLoggedIn(true);
-            navigate(`/user/${userId}`);
-        })
+        
         .catch(error => {
             alert(error.message);
         })
-        .finally(() => {
-            setSubmitting(false);
-        });
+       
     };
 
     return (
@@ -58,13 +60,21 @@ function Login({ setIsLoggedIn, setUserId }) {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={handleFormSubmit}
                 >
-                    {({ isSubmitting }) => (
-                        <Form className="login-form">
+                    {( props ) => { 
+                        const { values: { 
+                            username, 
+                            password
+                        }, 
+                            handleChange, handleSubmit, errors } = props
+                        return(
+                        <Form className="login-form" onSubmit = {handleSubmit}>
                             <div>
                                 <h3 className="h3-login">Username:</h3>
-                                <Field
+                                <Field 
+                                    onChange = {handleChange} 
+                                    value = {username}
                                     type="text"
                                     id="username"
                                     name="username"
@@ -75,7 +85,9 @@ function Login({ setIsLoggedIn, setUserId }) {
                             </div>
                             <div>
                                 <h3 className="">Password:</h3>
-                                <Field
+                                <Field 
+                                    onChange = {handleChange} 
+                                    value = {password}
                                     type="password"
                                     id="password"
                                     name="password"
@@ -84,11 +96,11 @@ function Login({ setIsLoggedIn, setUserId }) {
                                 />
                                 <ErrorMessage name="password" component="div" className="error-message" />
                             </div>
-                            <button type="submit" className="login-btn" disabled={isSubmitting}>
-                                {isSubmitting ? "Logging in..." : "Log In"}
+                            <button type="submit" className="login-btn" > Submit
+                                {/* {isSubmitting ? "Logging in..." : "Log In"} */}
                             </button>
-                        </Form>
-                    )}
+                        </Form>)
+                    }}
                 </Formik>
                 <h3 className="">
                     New to PenPrez?{" "}

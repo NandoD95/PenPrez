@@ -2,10 +2,10 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy 
 from flask_sqlalchemy import SQLAlchemy 
 from sqlalchemy.orm import validates
-from flask_bcrypt import Bcrypt
 
 
-from config import db
+
+from config import db, bcrypt
 
 class User(db.Model,SerializerMixin): 
    
@@ -29,9 +29,9 @@ class User(db.Model,SerializerMixin):
     def password_hash(self, password):
         self._password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
     
-    #Create an authenticate method that uses bcyrpt to verify the password against the hash in the DB with bcrypt.check_password_hash
+    
     def authenticate(self, password):
-        return Bcrypt.check_password_hash(self.password_hash, 'password')
+        return bcrypt.check_password_hash(self.password_hash, 'password')
 
     @validates('email')
     def validate_email(self, key, address):
