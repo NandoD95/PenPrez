@@ -126,7 +126,7 @@ function SignUp({ setIsLoggedIn, setUserId }) {
         },
         validationSchema: validationSchema,
         onSubmit: (values, { setSubmitting, resetForm }) => {
-            fetch('/api/users', {
+            fetch('/users', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

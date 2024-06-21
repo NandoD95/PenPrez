@@ -2,9 +2,10 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy 
 from flask_sqlalchemy import SQLAlchemy 
 from sqlalchemy.orm import validates
+from flask_bcrypt import Bcrypt
 
 
-from config import db, bcrypt
+from config import db
 
 class User(db.Model,SerializerMixin): 
    
@@ -23,13 +24,14 @@ class User(db.Model,SerializerMixin):
     @property
     def password_hash(self):
         return self._password_hash
-    
+
     @password_hash.setter
     def password_hash(self, password):
         self._password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-
+    
+    #Create an authenticate method that uses bcyrpt to verify the password against the hash in the DB with bcrypt.check_password_hash
     def authenticate(self, password):
-        return bcrypt.check_password_hash(self.password_hash, password)
+        return Bcrypt.check_password_hash(self.password_hash, 'password')
 
     @validates('email')
     def validate_email(self, key, address):
@@ -62,7 +64,7 @@ class Manager(db.Model, SerializerMixin):
     
     users = db.relationship('User', back_populates='manager')  
 
-    serialize_rules = ('-users.manager')
+    serialize_rules = ('-users.manager',) 
 
 
 
@@ -78,8 +80,8 @@ class Review(db.Model, SerializerMixin):
     user = db.relationship('User', backref = 'reviews') 
     manager = db.relationship('Manager', backref = 'reviews')
 
-    serialize_rules = ('-user.reviews') 
-    serialize_rules = ('-manager.reviews')
+    serialize_rules = ('-user.reviews', '-manager.reviews') 
+    
 
     @validates('user_id') 
     def validate_user_id(self, key, user_id): 
