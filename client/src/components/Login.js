@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom"
 function Login() {
     const navigate = useNavigate(); 
 
-    const [setUserId, setIsLoggedIn, userId, isLoggedIn] = useOutletContext();
+    const [isLoggedIn, setIsLoggedIn, userId, setUserId] = useOutletContext();
 
     // Initial form values
     const initialValues = {
@@ -33,11 +33,12 @@ function Login() {
         })
         .then(r => {
             if (r.ok) {
-                r.json().then(data => {
-                    const userId = data.id;
-                    setUserId(userId);
+                r.json().then(data => { 
+                    console.log(data)
+                    
+                    setUserId(()=> data.id);
                     setIsLoggedIn(true);
-                    navigate(`/user/${userId}`);
+                    navigate('/review');
                 });
             } else {
                 throw new Error("Invalid login credentials");
@@ -67,7 +68,7 @@ function Login() {
                             username, 
                             password
                         }, 
-                            handleChange, handleSubmit, errors } = props
+                            handleChange, handleSubmit } = props
                         return(
                         <Form className="login-form" onSubmit = {handleSubmit}>
                             <div>

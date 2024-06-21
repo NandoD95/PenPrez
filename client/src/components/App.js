@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 function App() {  
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [userId, setUserId] = useState(undefined) 
+  const [userId, setUserId] = useState(null) 
 
   useEffect(() => {
     fetch('/check_session')
