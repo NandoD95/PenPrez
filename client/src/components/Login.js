@@ -35,7 +35,7 @@ function Login({ setIsLoggedIn, setUserId }) {
             }
         })
         .then(data => {
-            const userId = data.id; // Assuming API returns user ID
+            const userId = data.id;
             setUserId(userId);
             setIsLoggedIn(true);
             navigate(`/user/${userId}`);

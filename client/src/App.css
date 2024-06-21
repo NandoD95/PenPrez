@@ -465,3 +465,77 @@
     font-size: 18px;
     line-height: 1.6;
 }
+
+/* Calendar.css */
+
+.calendar-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.date-picker-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.date-picker {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.schedule-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.schedule-btn:hover {
+    background-color: #0056b3;
+}
+
+.appointments-list {
+    margin-top: 20px;
+}
+
+.appointments-list h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.appointments-list.ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.appointments-list.li {
+    margin-bottom: 10px;
+}
+
+.cancel-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #bd2130;
+}

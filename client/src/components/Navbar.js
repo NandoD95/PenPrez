@@ -5,12 +5,17 @@ import Dropdown from "./Dropdown";
 import './Navbar.css'
 
 function Navbar(){
+    // State variable to track the click state of the menu icon.
     const [click, setClick] = useState(false);
+    // State variable to track the dropdown state.
     const [dropdown, setDropdown] = useState(false);
 
+    // Function to handle the click event of the menu icon.
     const handleClick = () => setClick(!click)
+    // closes the mobile menu
     const closeMobileMenu = () => setClick(false)
 
+    // Handles the mouse enter event of the nav item. Sets the dropdown state based on the window width.
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
             setDropdown(false)
@@ -19,6 +24,7 @@ function Navbar(){
         }
     };
 
+    // Handles the mouse leave event of the nav item. Sets the dropdown state based on the window width.
     const onMouseLeave = () => {
         if (window.innerWidth < 960) {
             setDropdown(false)
